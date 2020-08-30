@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Your Cart Items</h2>
+@using (Html.BeginForm("orderDetail", "Cart"))
+{
+    <table class="table tab-content table-bordered">
+        <thead>
+            <tr>
+                <td>Product Name</td>
+                <td>price</td>
+                <td>Quantity</td>
+                <td>Subtotal</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in (List<BethanyPieShop2.ViewModel.ProductViewModel>)Session["cart"])
+            {
+                <tr>
+
+                    <td id="p1">@item.ProductDetails.ProductName</td>
+                    <td id="p2">@item.ProductDetails.Price $</td>
+                    <td id="p3">@item.Quantity</td>
+                    <td id="p4">@(item.ProductDetails.Price * item.Quantity)</td>
+
+                </tr>
+}
+
+        </tbody>
+    </table>
+    <script>
+    function submitDetail(p1,p2,p3,p4)
+    {
+
+        //document.getElementById("demo").style.color = "red";
+    }
+    </script>
+    <button type="submit" class="btn btn-group-sm btn-success" onclick="submitDetail(p1,p2,p3,p4)">Order Now</button>
+}
+
+
+

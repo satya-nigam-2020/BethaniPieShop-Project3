@@ -1,0 +1,54 @@
+﻿@model BethanyPieShop2.Models.Address
+@{
+    ViewBag.Title = "Address2";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Order Summary</h2>
+@using (Html.BeginForm("ConfirmOrder", "Cart"))
+{
+
+    <table class="table tab-content table-bordered">
+        <thead>
+            <tr>
+                <td>Product Name</td>
+                <td>price</td>
+                <td>Quantity</td>
+                <td>Subtotal</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in (List<BethanyPieShop2.ViewModel.ProductViewModel>)Session["cart"])
+            {
+                <tr>
+
+                    <td>@item.ProductDetails.ProductName</td>
+                    <td>@item.ProductDetails.Price $</td>
+                    <td>@item.Quantity</td>
+                    <td>@(item.ProductDetails.Price * item.Quantity)</td>
+
+                </tr>
+            }
+
+        </tbody>
+        <tbody>
+
+
+            <tr>
+                <td align="right" colspan="3">Total</td>
+                <td>
+                    @{
+                        List<BethanyPieShop2.ViewModel.ProductViewModel> cart = (List<BethanyPieShop2.ViewModel.ProductViewModel>)Session["cart"];
+                        var total = cart.Sum(item => item.ProductDetails.Price * item.Quantity);
+                    }
+                    @total
+                </td>
+            </tr>
+
+
+        </tbody>
+    </table>
+
+    <button type="submit" class="btn btn-group-sm btn-success">Confirm Your Order</button>
+}
+
