@@ -1,0 +1,38 @@
+﻿@model IEnumerable<BethanyPieShop2.Models.Register>
+
+<h2>User Detials</h2>
+
+
+<style>
+    class1 tr:hover {
+        background-color: green
+    }
+</style>
+
+
+<div class=" form-group" style="background-color:white ">
+    <table class="table table-bordered table-hover table-condensed table-striped ">
+        <thead>
+            <tr class="">
+                <td><b>UserId</b></td>
+                <td><b>First Name</b></td>
+                <td><b>Last Name</b></td>
+                <td><b>Phone Number</b></td>
+                <td><b>Email</b></td>
+                <td><b>Operation</b></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var usr in Model)
+            {
+<tr class="class1">
+    <td>@usr.UserId</td>
+    <td>@usr.FName</td>
+    <td>@usr.LName</td>
+    <td>@usr.PhoneNo</td>
+    <td>@usr.EmailId</td>
+    <td>@Html.ActionLink("Delete", "Delete", "Admin", new { id = usr.UserId }, new { @class = "btn btn-danger btn-sm" })</td>
+</tr>            }
+        </tbody>
+    </table>
+</div>

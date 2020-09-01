@@ -1,38 +1,73 @@
 ﻿@model BethanyPieShop2.Models.Register
 
-@{
-    ViewBag.Title = "AccountDetails";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-<h2>AccountDetails</h2>
-
 <div>
     <h4>Register</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.FName)  :  @Model.FName
-
+            @Html.DisplayNameFor(model => model.FName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.LName)  :  @*@Model.LName*@
+            @Html.DisplayFor(model => model.FName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.PhoneNo)  : @*@Model.PhoneNo*@
+            @Html.DisplayNameFor(model => model.LName)
         </dt>
 
+        <dd>
+            @Html.DisplayFor(model => model.LName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNo)
+        </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.EmailId)  :  @*@Model.EmailId*@
+            @Html.DisplayFor(model => model.PhoneNo)
         </dd>
-  
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+        @{ if (Model.EmailId== "satya@gmail.com")
+            {
+            <dt>
+                @Html.DisplayName("Account Type")
+            </dt>
+
+            <dd>
+                @Html.DisplayName("Admin")
+            </dd>
+            }
+            else
+            {
+        <dt>
+            @Html.DisplayName("Account Type")
+        </dt>
+
+        <dd>
+            @Html.DisplayName("User")
+        </dd>
+                }
+            }
 
     </dl>
 </div>
-@*<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.UserId }) 
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.UserId }) |
     @Html.ActionLink("Back to List", "Index")
-</p>*@
+</p>

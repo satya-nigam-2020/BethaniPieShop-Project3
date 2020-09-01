@@ -9,27 +9,34 @@ namespace BethanyPieShop2.Controllers
 {
     public class AccountController : Controller
     {
-       // DbContextClass _context;
+        DbContextClass _context;
+
+        public AccountController()
+        {
+            _context = new DbContextClass();
+        }
         // GET: Account
         public ActionResult Index()
         {
             return View();
+
         }
         public ActionResult YourOrder()
         {
             return View();
         }
 
-        public ActionResult CartItems()
-        {
-            return View();
-        }
+        //public ActionResult CartItems()
+        //{
+        //    return View();
+        //}
 
         public ActionResult AccountDetails()
         {
-            //var singleCustomer = _context.Addresses.SingleOrDefault(c => c.UserId == id);
+            int single = (int)Session["UserId"];
+            var singleCustomer = _context.Registers.Find(single);
             //return View(singleCustomer);
-            return View();
+            return View(singleCustomer);
         }
     }
 }

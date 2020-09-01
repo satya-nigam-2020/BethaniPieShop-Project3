@@ -73,13 +73,27 @@
                 {
                 <div style="color : white; float : right">
                     <ul class="nav navbar-nav">
-                        <li>Welcome @Session["username"] (@Session["UserId"])</li>
-                        <li class="dropdown" style="margin-top : 15px">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">All Pies <span class="caret"></span></a>
+                        <li style="margin-top:14px">Welcome @Session["username"] (@Session["UserId"])</li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Account<span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li>@Html.ActionLink("Your Orders", "Index", "Account")</li>
-                                <li>@Html.ActionLink("Profile", "AccountDetails", "Account")</li>
-                                <li>@Html.ActionLink("Cart Items", "YourCart", "Account")</li>
+                                
+                                @{ int el =(int) Session["UserId"];
+                                    if (el==7)
+                                    {
+                                    <li>@Html.ActionLink("All Users", "UserIndex", "Admin")</li>
+                                    <li>@Html.ActionLink("All Orders", "OrderIndex", "Admin")</li>
+                                    <li>@Html.ActionLink("Profile", "AccountDetails", "Account")</li> 
+                                    }
+                                   else
+                                    {
+                                       <li>@Html.ActionLink("Your Orders", "Index", "Account")</li>
+                                       <li>@Html.ActionLink("Profile", "AccountDetails", "Account")</li>
+                                       <li>@Html.ActionLink("Cart Items", "CartItems", "Account")</li>
+                                    }
+
+                                }
+
                                 <li class="divider"></li>
                             </ul>
                         </li>

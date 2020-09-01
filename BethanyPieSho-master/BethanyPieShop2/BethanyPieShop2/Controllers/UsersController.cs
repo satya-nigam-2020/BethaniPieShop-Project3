@@ -51,10 +51,18 @@ namespace BethanyPieShop2.Controllers
                 ViewBag.ErrorMessage = "Login Failed";
                 return View();
             }
+            else if(credentials.EmailId=="satya@gmail.com")
+            {
+                Session["username"] = credentials.FName;
+                Session["UserId"] = credentials.UserId;
+                Session["EmaiId"] = credentials.EmailId;
+                return RedirectToAction("UserIndex", "Admin");
+            }
             else
             {
                 Session["username"] = credentials.FName;
                 Session["UserId"] = credentials.UserId;
+                Session["EmailId"] = credentials.EmailId;
 
                 return RedirectToAction("Index", "Home");
             }

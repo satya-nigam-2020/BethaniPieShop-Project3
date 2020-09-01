@@ -1,0 +1,35 @@
+﻿@model IEnumerable<BethanyPieShop2.Models.OrderDetail>
+@{
+    ViewBag.Title = "OrderIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>All Received Order</h2>
+<div>
+    <table>
+        <thead>
+            <tr>
+                <td><b>Order Id</b></td>
+                <td><b>No Of Item</b></td>
+                <td><b>Total Price</b></td>
+                <td><b>Delivery Status</b></td>
+                <td><b>User ID</b></td>
+                <td><b>Operations</b></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model)
+            {
+<tr>
+    <td>@order.OrderId</td>
+    <td>@order.NoOfOrder</td>
+    <td>@order.TotalPrice</td>
+    <td>@order.IsDelivered</td>
+    <td>@order.UserId</td>
+    <td>@Html.ActionLink("Edit", "Edit", "Admin", new { id = order.OrderId }, new { @class = "btn btn-primary btn-sm" })  
+    @Html.ActionLink("Delete", "OrderDelete", "Admin", new { id = order.OrderId }, new { @class = "btn btn-danger btn-sm" })</td>
+</tr>            }
+        </tbody>
+    </table>
+</div>
+
