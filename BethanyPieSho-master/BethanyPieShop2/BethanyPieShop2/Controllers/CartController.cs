@@ -48,6 +48,7 @@ namespace BethanyPieShop2.Controllers
                 }
                 else
                 {
+
                     cart.Add(new ProductViewModel { ProductDetails = singleProduct, Quantity = 1 });
                 }
                 Session["cart"] = cart;
@@ -79,6 +80,8 @@ namespace BethanyPieShop2.Controllers
 
         public ActionResult Address2()
         {
+        //    string single = (string)Session["FName"];
+        //    var singleCustomer = _context.Addresses.Find(single);
             Address1();
             return View();
         }

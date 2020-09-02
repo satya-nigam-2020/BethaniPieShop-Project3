@@ -55,18 +55,42 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">All Pies <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li>@Html.ActionLink("Cakeese Pies", "Index", "Items")</li>
-                            <li>@Html.ActionLink("Fruit Pies", "Index2", "Items")</li>
-                            <li>@Html.ActionLink("Seasonal Pies", "", "")</li>
-                            <li class="divider"></li>
-                            <li>@Html.ActionLink("View AllPies", "", "Home")</li>
+                            @{
+                                //  var a = 0;
+                                BethanyPieShop2.Models.DbContextClass _context = new BethanyPieShop2.Models.DbContextClass();
+                                var z = _context.Categories.ToList();
+                                foreach (var cata in z)
+                                {
+                                    <li>@Html.ActionLink(@cata.PieType, "ApplePie","ProductDetails", new { id=cata.Id}, null)</li>
+                                }
+
+
+                                @*<li>@Html.ActionLink("Cakeese Pies", "Index", "Items")</li>
+                                <li>@Html.ActionLink("Fruit Pies", "Index2", "Items")</li>
+                                <li>@Html.ActionLink("Seasonal Pies", "", "")</li>*@
+                                <li class="divider"></li>
+                                <li>@Html.ActionLink("View AllPies", "", "Home")</li>
+                            }
                         </ul>
                     </li>
+
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+
                     @if (Session["username"] == null)
                     {
-                    <li>@Html.ActionLink("Register", "Register", "Users")</li>
-                    <li>@Html.ActionLink("Login", "Index", "Users")</li>
+                        <li>@Html.ActionLink("Register", "Register", "Users")</li>
+                        <li>@Html.ActionLink("Login", "Index", "Users")</li>
+                    }
+                    @if (Session["cart"] != null)
+                    {
+                        var len = 0;
+                        {
+                            // List<BethanyPieShop2.ViewModel.ProductViewModel>)Session["cart"]
+                            var a = (List<BethanyPieShop2.ViewModel.ProductViewModel>)Session["cart"];
+                            len = a.Count;
+
+                        }
+                        <li style=" color:white; margin-top:14px"><i style="color:black; height:25px; width:20px;" class="fas fa-shopping-cart"></i>@len</li>
                     }
                 </ul>
                 @if (Session["username"] != null)
@@ -77,19 +101,22 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Account<span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                
-                                @{ int el =(int) Session["UserId"];
-                                    if (el==7)
+                               
+
+
+                                @{ int el = (int)Session["UserId"];
+                                    if (el == 7)
                                     {
-                                    <li>@Html.ActionLink("All Users", "UserIndex", "Admin")</li>
-                                    <li>@Html.ActionLink("All Orders", "OrderIndex", "Admin")</li>
-                                    <li>@Html.ActionLink("Profile", "AccountDetails", "Account")</li> 
+                                        <li>@Html.ActionLink("All Users", "UserIndex", "Admin")</li>
+                                        <li>@Html.ActionLink("All Orders", "OrderIndex", "Admin")</li>
+                                        <li>@Html.ActionLink("Profile", "AccountDetails", "Account")</li>
+
                                     }
-                                   else
+                                    else
                                     {
-                                       <li>@Html.ActionLink("Your Orders", "Index", "Account")</li>
-                                       <li>@Html.ActionLink("Profile", "AccountDetails", "Account")</li>
-                                       <li>@Html.ActionLink("Cart Items", "CartItems", "Account")</li>
+                                        <li>@Html.ActionLink("Your Orders", "Index", "Account")</li>
+                                        <li>@Html.ActionLink("Profile", "AccountDetails", "Account")</li>
+                                        <li>@Html.ActionLink("Cart Items", "CartItems", "Account")</li>
                                     }
 
                                 }

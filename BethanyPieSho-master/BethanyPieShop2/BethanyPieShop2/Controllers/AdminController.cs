@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace BethanyPieShop2.Controllers
 {
@@ -30,7 +31,8 @@ namespace BethanyPieShop2.Controllers
 
         public ActionResult OrderIndex()
         {
-            return View();
+            var res1 = _context.OrderDetails.Include(c=>c.Register).ToList();
+            return View(res1);
         }
 
         [HttpPost]

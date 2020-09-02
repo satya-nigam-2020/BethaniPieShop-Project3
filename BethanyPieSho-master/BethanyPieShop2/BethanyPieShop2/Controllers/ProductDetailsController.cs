@@ -26,9 +26,11 @@ namespace BethanyPieShop2.Controllers
             return View(allPies);
 
         }
-        public ActionResult ApplePie()
+        public ActionResult ApplePie(int id)
         {
-            return View();
+            var CatPie = _context.ProductDetails.Include(c => c.Catagory).Where(p => p.CatagoryId == id);
+
+            return View(CatPie);
         }
         public ActionResult PumpkinPie()
         {
