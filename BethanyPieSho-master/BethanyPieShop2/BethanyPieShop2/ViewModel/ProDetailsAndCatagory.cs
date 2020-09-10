@@ -10,6 +10,7 @@ namespace BethanyPieShop2.ViewModel
     {
         public IEnumerable<Category> Catagories { get; set; }
         public ProductDetail ProductDetail { get; set; }
-       
+        public Category Category { get; set; }
+
     }
 }

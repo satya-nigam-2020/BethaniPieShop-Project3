@@ -90,7 +90,7 @@
                             len = a.Count;
 
                         }
-                        <li style=" color:white; margin-top:14px"><i style="color:black; height:25px; width:20px;" class="fas fa-shopping-cart"></i>@len</li>
+                        <li style=" color:white; margin-top:14px"><i style="color:black; height:25px; width:20px;" class="fa fa-shopping-cart"></i>@len</li>
                     }
                 </ul>
                 @if (Session["username"] != null)
@@ -101,7 +101,7 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Account<span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                               
+
 
 
                                 @{ int el = (int)Session["UserId"];
@@ -110,6 +110,7 @@
                                         <li>@Html.ActionLink("All Users", "UserIndex", "Admin")</li>
                                         <li>@Html.ActionLink("All Orders", "OrderIndex", "Admin")</li>
                                         <li>@Html.ActionLink("Profile", "AccountDetails", "Account")</li>
+                                        <li>@Html.ActionLink("Add New Items", "Create", "ProductDetails")</li>
 
                                     }
                                     else

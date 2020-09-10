@@ -13,9 +13,13 @@ namespace BethanyPieShop2.Controllers
     {
         // GET: ProductDetails
         DbContextClass _context;
+        ProductDetail productObj;
+        //ProDetailsAndCatagory productObj1 = new ProDetailsAndCatagory();
+        //ProductDetail productObj = new ProductDetail();
         public ProductDetailsController()
         {
             _context = new DbContextClass();
+          productObj  = new ProductDetail();
 
         }
         public ActionResult Index()
@@ -73,34 +77,42 @@ namespace BethanyPieShop2.Controllers
         //    return View("Create", up);
         //}
 
-        //public ActionResult Create()
-        //{
-        //    var newCatagory = _context.Categories.ToList();
-        //    var viewModel = new ProDetailsAndCatagory
-        //    {
-        //        Catagories = newCatagory
-        //        //ProductDetail = new ProductDetail()
-        //    };
-        //    return View(viewModel);
-        //}
+        public ActionResult Create()
+        {
+            var newCatagory = _context.Categories.ToList();
+            var viewModel = new ProDetailsAndCatagory
+            {
+                Catagories = newCatagory
+                //ProductDetail = new ProductDetail()
+            };
+            return View(viewModel);
+        }
 
-        //[HttpPost]
-        //public ActionResult Create(ProductDetail product)
-        //{
-        //    _context.ProductDetails.Add(product);                      // Data Binding
-        //    //_context.Set<ProductDetail>().AddOrUpdate(product);
-        //    _context.SaveChanges();
-        //    //try
-        //    //{
-        //    //	_context.SaveChanges();
-        //    //}
-        //    //catch (DbEntityValidationException e)
-        //    //{
-        //    //             Console.WriteLine(e);
-        //    //}
+        [HttpPost]
+        public ActionResult Create(ProDetailsAndCatagory product)
+        {
 
-        //    return RedirectToAction("Index", "ProductDetails");
-        //}
+            //productObj.ProductName = Request.Form["ProductName"];
+            //productObj.ShortDescription = Request.Form["ShortDescription"];
+            //productObj.Price = Convert.ToInt32( Request.Form["Price"]);
+            //productObj.LongDescription = Request.Form["LongDescription"];
+            //productObj.ImagePath = Request.Form["ImagePath"];
+            //productObj.CatagoryId  = Convert.ToInt32(Request.Form["CatagoryId"]);
+
+
+            productObj.ProductName = product.ProductDetail.ProductName;
+            productObj.ShortDescription = product.ProductDetail.ShortDescription;
+            productObj.LongDescription = product.ProductDetail.LongDescription;
+            productObj.Price = product.ProductDetail.Price;
+            productObj.CatagoryId = product.ProductDetail.CatagoryId;
+            productObj.ImagePath = product.ProductDetail.ImagePath;
+            
+            _context.ProductDetails.Add(productObj);                      // Data Binding
+
+            _context.SaveChanges();
+           
+            return RedirectToAction("Index", "ProductDetails");
+        }
 
         //public ActionResult Delete(int? id)
         //{
