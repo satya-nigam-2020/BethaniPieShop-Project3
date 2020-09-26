@@ -157,8 +157,29 @@
     <Compile Include="Migrations\202008301010586_Adding Address Table.designer.cs">
       <DependentUpon>202008301010586_Adding Address Table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009120735151_adding AddressUser table.cs" />
+    <Compile Include="Migrations\202009120735151_adding AddressUser table.designer.cs">
+      <DependentUpon>202009120735151_adding AddressUser table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009120741548_updating Address Table.cs" />
+    <Compile Include="Migrations\202009120741548_updating Address Table.designer.cs">
+      <DependentUpon>202009120741548_updating Address Table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009121636538_updating AddressUser table.cs" />
+    <Compile Include="Migrations\202009121636538_updating AddressUser table.designer.cs">
+      <DependentUpon>202009121636538_updating AddressUser table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009141659053_Adding Status property in AddressUser Table.cs" />
+    <Compile Include="Migrations\202009141659053_Adding Status property in AddressUser Table.designer.cs">
+      <DependentUpon>202009141659053_Adding Status property in AddressUser Table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009160812165_Adding Status property in Register Table.cs" />
+    <Compile Include="Migrations\202009160812165_Adding Status property in Register Table.designer.cs">
+      <DependentUpon>202009160812165_Adding Status property in Register Table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Address.cs" />
+    <Compile Include="Models\AddressUser.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\DbContextClass.cs" />
     <Compile Include="Models\OrderDetail.cs" />
@@ -227,6 +248,7 @@
     <Content Include="Views\Account\AccountDetails.cshtml" />
     <Content Include="Views\Admin\UserIndex.cshtml" />
     <Content Include="Views\Admin\OrderIndex.cshtml" />
+    <Content Include="Views\Cart\Address3.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -264,6 +286,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008301010586_Adding Address Table.resx">
       <DependentUpon>202008301010586_Adding Address Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009120735151_adding AddressUser table.resx">
+      <DependentUpon>202009120735151_adding AddressUser table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009120741548_updating Address Table.resx">
+      <DependentUpon>202009120741548_updating Address Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009121636538_updating AddressUser table.resx">
+      <DependentUpon>202009121636538_updating AddressUser table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009141659053_Adding Status property in AddressUser Table.resx">
+      <DependentUpon>202009141659053_Adding Status property in AddressUser Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009160812165_Adding Status property in Register Table.resx">
+      <DependentUpon>202009160812165_Adding Status property in Register Table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

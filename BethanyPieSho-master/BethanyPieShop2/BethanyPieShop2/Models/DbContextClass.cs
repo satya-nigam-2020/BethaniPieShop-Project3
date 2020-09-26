@@ -13,5 +13,6 @@ namespace BethanyPieShop2.Models
         public DbSet<Category> Categories { get; set; }
         public DbSet<ProductDetail> ProductDetails { get; set; }
         public DbSet<Address> Addresses { get; set; }
+        public DbSet<AddressUser> AddressUsers { get; set; }
     }
 }

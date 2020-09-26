@@ -38,5 +38,6 @@ namespace BethanyPieShop2.Models
         [Required(ErrorMessage = "Password is required")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+        public bool AddressStatus { get; set; }
     }
 }

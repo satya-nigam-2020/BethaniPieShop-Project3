@@ -1,4 +1,4 @@
-﻿@model BethanyPieShop2.Models.Address
+﻿@model BethanyPieShop2.Models.AddressUser
 @{
     ViewBag.Title = "Address2";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -8,52 +8,67 @@
 @using (Html.BeginForm("ConfirmOrder", "Cart"))
 {
 
-    <table class="table tab-content table-bordered">
-        <thead>
+<table class="table tab-content table-bordered">
+    <thead>
+        <tr>
+            <td>Product Name</td>
+            <td>price</td>
+            <td>Quantity</td>
+            <td>Subtotal</td>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in (List<BethanyPieShop2.ViewModel.ProductViewModel>)Session["cart"])
+        {
             <tr>
-                <td>Product Name</td>
-                <td>price</td>
-                <td>Quantity</td>
-                <td>Subtotal</td>
+
+                <td>@item.ProductDetails.ProductName</td>
+                <td>@item.ProductDetails.Price $</td>
+                <td>@item.Quantity</td>
+                <td>@(item.ProductDetails.Price * item.Quantity)</td>
+               
+
             </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in (List<BethanyPieShop2.ViewModel.ProductViewModel>)Session["cart"])
-            {
-                <tr>
+        }
 
-                    <td>@item.ProductDetails.ProductName</td>
-                    <td>@item.ProductDetails.Price $</td>
-                    <td>@item.Quantity</td>
-                    <td>@(item.ProductDetails.Price * item.Quantity)</td>
-
-                </tr>
-            }
-
-        </tbody>
-        <tbody>
+    </tbody>
+    <tbody>
 
 
-            <tr>
-                <td align="right" colspan="3">Total</td>
-                <td>
-                    @{
-                        List<BethanyPieShop2.ViewModel.ProductViewModel> cart = (List<BethanyPieShop2.ViewModel.ProductViewModel>)Session["cart"];
-                        var total = cart.Sum(item => item.ProductDetails.Price * item.Quantity);
-                    }
-                    @total
-                </td>
-            </tr>
-            <tr>
-                @*<td>Address</td>
-                <td>
+        <tr>
+            <td align="right" colspan="3">Total</td>
+            <td>
+                @{
+                    List<BethanyPieShop2.ViewModel.ProductViewModel> cart = (List<BethanyPieShop2.ViewModel.ProductViewModel>)Session["cart"];
+                    var total = cart.Sum(item => item.ProductDetails.Price * item.Quantity);
+                }
+                @total
+            </td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td align="center" colspan="3">
+                @*@{
+                //BethanyPieShop2.Models.AddressUser aa = new BethanyPieShop2.Models.AddressUser();
+                BethanyPieShop2.Models.DbContextClass _context = new BethanyPieShop2.Models.DbContextClass();
+                int id = (int)Session["UserId"];
+                var aaa = _context.AddressUsers.Where(c => c.UserId == id);
+                var aaaa = _context.AddressUsers.Find(aaa);
+
+
+                            @aaaa.Address1
+
+            }*@
                 @Model.Address1
-                </td>*@
-            </tr>
+            </td>
+        </tr>
 
 
-        </tbody>
-    </table>
+    </tbody>
+   
+</table>
+    
 
     <button type="submit" class="btn btn-group-sm btn-success">Confirm Your Order</button>
 }

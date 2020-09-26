@@ -139,3 +139,8 @@ F:\Zensar_satya_prakash\Daily_work\BethanyPieSho-master\BethanyPieShop2\BethanyP
 F:\Zensar_satya_prakash\Daily_work\BethanyPieSho-master\BethanyPieShop2\BethanyPieShop2\bin\Antlr3.Runtime.pdb
 F:\Zensar_satya_prakash\Daily_work\BethanyPieSho-master\BethanyPieShop2\BethanyPieShop2\obj\Debug\BethanyPieShop2.csproj.CopyComplete
 F:\Zensar_satya_prakash\Daily_work\BethanyPieSho-master\BethanyPieShop2\BethanyPieShop2\obj\Debug\BethanyPieShop2.Migrations.AddingAddressTable.resources
+F:\Zensar_satya_prakash\Daily_work\BethanyPieSho-master\BethanyPieShop2\BethanyPieShop2\obj\Debug\BethanyPieShop2.Migrations.addingAddressUsertable.resources
+F:\Zensar_satya_prakash\Daily_work\BethanyPieSho-master\BethanyPieShop2\BethanyPieShop2\obj\Debug\BethanyPieShop2.Migrations.updatingAddressTable.resources
+F:\Zensar_satya_prakash\Daily_work\BethanyPieSho-master\BethanyPieShop2\BethanyPieShop2\obj\Debug\BethanyPieShop2.Migrations.updatingAddressUsertable.resources
+F:\Zensar_satya_prakash\Daily_work\BethanyPieSho-master\BethanyPieShop2\BethanyPieShop2\obj\Debug\BethanyPieShop2.Migrations.AddingStatuspropertyinAddressUserTable.resources
+F:\Zensar_satya_prakash\Daily_work\BethanyPieSho-master\BethanyPieShop2\BethanyPieShop2\obj\Debug\BethanyPieShop2.Migrations.AddingStatuspropertyinRegisterTable.resources

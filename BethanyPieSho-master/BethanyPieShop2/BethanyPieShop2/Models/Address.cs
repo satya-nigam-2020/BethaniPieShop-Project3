@@ -9,6 +9,7 @@ namespace BethanyPieShop2.Models
     public class Address
     {
         [Key]
+        public int AddressId { get; set; }
         public string FName { get; set; }
         [Required(ErrorMessage = "FName is required")]
         [StringLength(20, ErrorMessage = "Minimum 3 and Maximum 20 characters required", MinimumLength = 3)]
