@@ -77,6 +77,7 @@ namespace BethanyPieShop2.Controllers
 
         public ActionResult Address()
         {
+
            // int id = (int)Session["UserId"];
             return View();
         }
@@ -84,24 +85,40 @@ namespace BethanyPieShop2.Controllers
         public ActionResult Address3()
         {
             int id = (int)Session["UserId"];
-            var aaa = _context.AddressUsers.Where(c => c.UserId == id).FirstOrDefault();
+            AddressViewModel aaa = new AddressViewModel();
+            aaa.AddressUsers = _context.AddressUsers.Where(c => c.UserId == id).FirstOrDefault();
+            aaa.SelectedAns = "";
             return View(aaa);
         }
 
         public ActionResult Address2()
         {
-            //    string single = (string)Session["FName"];
-            //    var singleCustomer = _context.Addresses.Find(single);
             int id = (int)Session["UserId"];
-            
-          // var aaaa = _context.AddressUsers.Find(aaa);
-            Address1();
             var aaa = _context.AddressUsers.Where(c => c.UserId == id).FirstOrDefault();
-            return View(aaa);
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("Address");
+            }
+            try
+            {
+                //    string single = (string)Session["FName"];
+                //    var singleCustomer = _context.Addresses.Find(single);
+                // var aaaa = _context.AddressUsers.Find(aaa);
+                Address1(ad);
+               // ViewBag.aa = d.SelectedAns;
+                 aaa = _context.AddressUsers.Where(c => c.UserId == id).FirstOrDefault();
+                return View(aaa);
+            }
+            catch(Exception e)
+            {
+                
+                return View(aaa);
+
+            }
         }
 
         [HttpPost]
-        public ActionResult Address1()
+        public ActionResult Address1(Address d)
         {
             // Address ad = _context.Addresses.SingleOrDefault(c => c.UserId == Session["UserId"]);
             // ad.UserId = Session["UserId"];
@@ -109,8 +126,9 @@ namespace BethanyPieShop2.Controllers
             int id = (int)Session["UserId"];
             var customerInDb = _context.Registers.SingleOrDefault(c => c.UserId == id);
 
+            
 
-            ad.UserId = Convert.ToInt32(Request.Form["UserId"]);
+            ad.UserId = id;
             ad.Country = (Request.Form["Country"]);
             ad.LName = (Request.Form["LName"]);
             ad.FName = (Request.Form["FName"]);
@@ -126,7 +144,7 @@ namespace BethanyPieShop2.Controllers
                 adu.Address1 = (Request.Form["FName"]) + " " + (Request.Form["LName"]) +
                     "\n " + (Request.Form["City"]) + ", " + (Request.Form["Address1"]) +
                     ", " + (Request.Form["State"]) + "(" + Convert.ToInt64(Request.Form["Zipcode"]) + ")";
-                adu.UserId = Convert.ToInt32(Request.Form["UserId"]);
+                adu.UserId = id;
                 adu.Status = true;
                 customerInDb.AddressStatus = true;
                 _context.AddressUsers.Add(adu);
@@ -142,7 +160,7 @@ namespace BethanyPieShop2.Controllers
                         aaa.Address2 = (Request.Form["FName"]) + " " + (Request.Form["LName"]) +
                     "\n " + (Request.Form["City"]) + ", " + (Request.Form["Address1"]) +
                     ", " + (Request.Form["State"]) + "(" + Convert.ToInt64(Request.Form["Zipcode"]) + ")";
-                        adu.UserId = Convert.ToInt32(Request.Form["UserId"]);
+                        adu.UserId = id;
                    
                     }
                     else if(aaa.Address3==null)

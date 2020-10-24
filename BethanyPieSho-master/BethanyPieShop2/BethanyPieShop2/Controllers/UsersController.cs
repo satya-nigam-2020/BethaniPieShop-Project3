@@ -64,7 +64,7 @@ namespace BethanyPieShop2.Controllers
                 Session["UserId"] = credentials.UserId;
                 Session["EmailId"] = credentials.EmailId;
 
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "ProductDetails");
             }
 
 

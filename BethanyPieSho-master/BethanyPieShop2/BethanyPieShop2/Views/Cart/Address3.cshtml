@@ -1,23 +1,25 @@
-﻿@model BethanyPieShop2.Models.AddressUser
+﻿@model BethanyPieShop2.ViewModel.AddressViewModel
 @{
     ViewBag.Title = "Address3";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Address3</h2>
+<h2>Available Addresses</h2>
 @using (Html.BeginForm("Address2", "Cart"))
 {
-   <h4>1.@Model.Address1</h4>
-    if (Model.Address2 != null)
+    @*<h4>1.@Model.Address1</h4>*@
+    @Html.RadioButtonFor(m => m.SelectedAns, Model.AddressUsers.Address1)<h4>@Model.AddressUsers.Address1</h4>
+    if (Model.AddressUsers.Address2 != null)
     {
-        @*@Html.RadioButtonFor("Answer","A")*@<h4>2.@Model.Address2</h4>
+        @Html.RadioButtonFor(m => m.SelectedAns, Model.AddressUsers.Address2)<h4>@Model.AddressUsers.Address2</h4>
     }
-    if (Model.Address3 != null)
+    if (Model.AddressUsers.Address3 != null)
     {
-        <h4>2.@Model.Address3</h4>
+        @*<h4>3.@Model.Address3</h4>*@
+        @Html.RadioButtonFor(m => m.SelectedAns, Model.AddressUsers.Address3)<h4>@Model.AddressUsers.Address3</h4>
     }
     @Html.ActionLink("Add New Address", "Address", "Cart", new { @class = "btn btn-primary" }, null);
-    
+
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <button type="submit" class="btn btn-group-sm btn-success">Confirm Your Order</button>

@@ -14,6 +14,7 @@ namespace BethanyPieShop2.Models
         [Required(ErrorMessage = "FName is required")]
         [StringLength(20, ErrorMessage = "Minimum 3 and Maximum 20 characters required", MinimumLength = 3)]
         public string LName { get; set; }
+       // [Required]
         public string Address1 { get; set; }
         public string Address2 { get; set; }
         public long Zipcode { get; set; }

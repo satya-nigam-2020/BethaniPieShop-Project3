@@ -28,16 +28,16 @@
                     <td id="p4">@(item.ProductDetails.Price * item.Quantity)</td>
 
                 </tr>
-}
+            }
 
         </tbody>
     </table>
+    @Html.ActionLink("Add More to Cart", "Index", "ProductDetails", new { @class = "btn btn-success" }, null);
     <script>
-    function submitDetail(p1,p2,p3,p4)
-    {
+        function submitDetail(p1, p2, p3, p4) {
 
-        //document.getElementById("demo").style.color = "red";
-    }
+            //document.getElementById("demo").style.color = "red";
+        }
     </script>
     <button type="submit" class="btn btn-group-sm btn-success" onclick="submitDetail(p1,p2,p3,p4)">Order Now</button>
 }
